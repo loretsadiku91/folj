@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Följ Mellan linjerna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Archivo:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#0B1A12; --kort:#13261B; --linje:#26412F; --text:#F3F1E8; --dim:#A9BBAE;
+  --gul:#F2C14E; --gron:#3DDC84;
+  --display:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --body:'Archivo',system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);margin:0}
+.sida{max-width:440px;margin:0 auto;padding-block:28px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+.topp{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:900;font-size:18px;letter-spacing:2px}
+h1{font-family:var(--display);font-weight:900;font-size:56px;line-height:.9;margin:0;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--gul)}
+.lead{margin:0;color:var(--dim);font-size:17px;line-height:1.5}
+.steg{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--dim)}
+.prickar{display:flex;gap:6px}
+.prickar i{width:28px;height:6px;border-radius:3px;background:var(--linje);transition:background .3s}
+.prickar i.klar{background:var(--gron)}
+.lista{display:flex;flex-direction:column;gap:12px}
+.reglage{position:relative;height:72px;border-radius:999px;background:var(--kort);border:1px solid var(--linje);overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.fyll{position:absolute;inset:0 auto 0 0;width:72px;border-radius:999px;transition:background .3s}
+.etikett{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-left:60px;font-weight:700;font-size:16px;color:var(--text);pointer-events:none}
+.etikett small{display:block;font-weight:600;font-size:12px;color:var(--dim)}
+.etikett .sken{background:linear-gradient(90deg,var(--dim) 0%,#fff 45%,var(--dim) 60%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sken 2.4s linear infinite}
+@keyframes sken{from{background-position:120% 0}to{background-position:-80% 0}}
+.knopp{position:absolute;top:6px;left:6px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:grab;box-shadow:0 4px 14px rgba(0,0,0,.4);touch-action:none;border:0;padding:0}
+.knopp:focus-visible{outline:3px solid var(--gul);outline-offset:3px}
+.knopp svg{width:30px;height:30px}
+.reglage.klar{border-color:var(--gron)}
+.reglage.klar .etikett{color:var(--bg)}
+.reglage.klar .etikett small{color:var(--bg)}
+.oppna{display:none;position:absolute;inset:0;align-items:center;justify-content:center;gap:8px;font-weight:800;color:#0B1A12;text-decoration:none;font-size:16px}
+.reglage.klar .oppna{display:flex}
+.reglage.klar .etikett{display:none}
+.tavling{border-radius:20px;border:1px solid var(--linje);background:var(--kort);padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.tavling h2{font-family:var(--display);font-weight:900;font-size:34px;line-height:.95;margin:0;text-transform:uppercase}
+.tavling p{margin:0;color:var(--dim);line-height:1.5}
+.las{position:absolute;inset:0;background:rgba(11,26,18,.86);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:20px;transition:opacity .5s}
+.las b{font-size:17px}
+.tavling.oppen .las{opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.etikett .sken{animation:none;color:var(--text)}}
+</style>
+</head>
+<body>
+<main class="sida">
+  <div class="topp">
+    <svg width="30" height="30" viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="140" fill="#0F2A1C" stroke="#F2C14E" stroke-width="12"/><rect x="80" y="95" width="140" height="110" rx="6" fill="none" stroke="#F2C14E" stroke-width="8"/><line x1="150" y1="95" x2="150" y2="205" stroke="#F2C14E" stroke-width="8"/><circle cx="150" cy="150" r="30" fill="#0F2A1C" stroke="#F2C14E" stroke-width="8"/><rect x="141" y="128" width="18" height="30" rx="9" fill="#F3F1E8"/></svg>
+    MELLAN LINJERNA
+  </div>
+
+  <h1>Följ<br><span>Mellan linjerna.</span></h1>
+  <p class="lead">Dra alla tre reglagen och följ oss på TikTok, Instagram och YouTube.</p>
+
+  <div class="steg"><div class="prickar"><i></i><i></i><i></i></div><span id="raknare">0 av 3</span></div>
+
+  <div class="lista">
+    <div class="reglage" data-farg="#25F4EE" data-namn="TikTok" data-url="https://www.tiktok.com/@mellanlinjerna">
+      <div class="fyll"></div>
+      <div class="etikett"><div><span class="sken">Dra för att följa på TikTok</span><small>@mellanlinjerna</small></div></div>
+      <a class="oppna" href="https://www.tiktok.com/@mellanlinjerna" target="_blank" rel="noopener">Följer på TikTok ✓ · öppna</a>
+      <button class="knopp" type="button" aria-label="Dra för att följa på TikTok" style="background:#000">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25F4EE" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z" transform="translate(-.6 -.4)"/><path fill="#FE2C55" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z" transform="translate(.6 .4)"/><path fill="#fff" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>
+      </button>
+    </div>
+
+    <div class="reglage" data-farg="#E1306C" data-namn="Instagram" data-url="https://www.instagram.com/mellanlinjerna_">
+      <div class="fyll"></div>
+      <div class="etikett"><div><span class="sken">Dra för att följa på Instagram</span><small>@mellanlinjerna_</small></div></div>
+      <a class="oppna" href="https://www.instagram.com/mellanlinjerna_" target="_blank" rel="noopener">Följer på Instagram ✓ · öppna</a>
+      <button class="knopp" type="button" aria-label="Dra för att följa på Instagram" style="background:linear-gradient(45deg,#FEDA75,#FA7E1E 30%,#D62976 60%,#962FBF 80%,#4F5BD5)">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff" stroke="none"/></svg>
+      </button>
+    </div>
+
+    <div class="reglage" data-farg="#FF0033" data-namn="YouTube" data-url="https://www.youtube.com/@mellanlinjerna">
+      <div class="fyll"></div>
+      <div class="etikett"><div><span class="sken">Dra för att prenumerera på YouTube</span><small>@mellanlinjerna</small></div></div>
+      <a class="oppna" href="https://www.youtube.com/@mellanlinjerna" target="_blank" rel="noopener">Prenumererar på YouTube ✓ · öppna</a>
+      <button class="knopp" type="button" aria-label="Dra för att prenumerera på YouTube" style="background:#fff">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5.5" width="20" height="13" rx="4" fill="#FF0033"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <section class="tavling" id="tavling" aria-live="polite">
+    <h2>Tack för att du följer oss!</h2>
+    <p>Nu missar du inga avsnitt, klipp eller event från Mellan linjerna.</p>
+    <div class="las" id="las"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F2C14E" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Dra alla tre</b><span style="color:var(--dim)">Så följer du oss överallt.</span></div>
+  </section>
+</main>
+
+<script>
+const reglage = [...document.querySelectorAll('.reglage')];
+const prickar = [...document.querySelectorAll('.prickar i')];
+function uppdatera() {
+  const klara = reglage.filter(r => r.classList.contains('klar')).length;
+  prickar.forEach((p, i) => p.classList.toggle('klar', i < klara));
+  document.getElementById('raknare').textContent = klara === 3 ? 'Klart! Du följer oss överallt' : klara + ' av 3';
+  if (klara === 3) document.getElementById('tavling').classList.add('oppen');
+}
+reglage.forEach(r => {
+  const knopp = r.querySelector('.knopp'), fyll = r.querySelector('.fyll');
+  let start = null, x = 0;
+  const max = () => r.clientWidth - 72;
+  const satt = v => { x = Math.max(0, Math.min(max(), v)); knopp.style.transform = `translateX(${x}px)`; fyll.style.width = (x + 72) + 'px'; fyll.style.background = `color-mix(in srgb, ${r.dataset.farg} ${Math.round(20 + x / max() * 60)}%, transparent)`; };
+  const klar = () => { r.classList.add('klar'); satt(max()); fyll.style.background = r.dataset.farg; knopp.style.transition = ''; uppdatera(); };
+  knopp.addEventListener('pointerdown', e => { if (r.classList.contains('klar')) return; start = e.clientX - x; knopp.setPointerCapture(e.pointerId); knopp.style.transition = 'none'; });
+  knopp.addEventListener('pointermove', e => { if (start === null) return; satt(e.clientX - start); });
+  knopp.addEventListener('pointerup', () => {
+    if (start === null) return; start = null;
+    if (x > max() * 0.85) klar();
+    else { knopp.style.transition = 'transform .3s'; fyll.style.transition = 'width .3s'; satt(0); }
+  });
+  knopp.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); klar(); } });
+});
+</script>
+</body>
+</html>
